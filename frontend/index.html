@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover the best hand-picked AI tools for writing, coding, image generation, design, video editing, and productivity. Explore, compare and submit AI tools.">
+    <title>AI Directory - Find The Best AI Tools For Every Task</title>
+    <link rel="stylesheet" href="style.css">
+    <head>
+    <meta charset="UTF-8">
+    <title>AI Directory</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+</head>
+</head>
+<body data-theme="dark">
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-sparkle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                </span>
+                AI Directory
+            </a>
+            
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="#directory" class="nav-link">Tools</a>
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">
+                    <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                
+                <span id="userSessionArea" style="display: flex; align-items: center; gap: 1rem;">
+                    <!-- Dynamically replaced by app.js -->
+                    <a href="/login" class="nav-link" style="font-weight: 600;">Login</a>
+                </span>
+
+                <button class="submit-btn" id="openSubmitModalBtn">Submit Tool</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                    Discover 100+ AI Tools
+                </div>
+                <h1>Find The Best<br><span>AI Tools</span> For<br>Every Task</h1>
+                <p class="hero-desc">Explore the best AI tools for writing, coding, design, image generation, video editing, marketing, productivity, and much more.</p>
+                
+                <form id="heroSearchForm" class="hero-search-wrapper">
+                    <div class="hero-search-input-container">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                        </svg>
+                        <input type="text" id="heroSearchInput" class="hero-search-input" placeholder="Search AI tools..." />
+                    </div>
+                    <button type="submit" class="hero-search-btn">Search</button>
+                </form>
+
+                <div class="hero-ctas">
+                    <a href="#directory" class="cta-btn cta-primary">Explore Tools &rarr;</a>
+                    <a href="#categories" class="cta-btn cta-secondary">Browse Categories</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="heroStatsTotal">100+</h4>
+                            <p>AI Tools</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h4 id="heroStatsCategories">12</h4>
+                            <p>Categories</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-info">
+                            <h4>24/7</h4>
+                            <p>Free Access</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="visual-sphere"></div>
+                <div class="visual-card">
+                    <div class="visual-card-glow"></div>
+                    <div class="visual-icon-box">AI</div>
+                    <h3>Smart Discovery</h3>
+                    <p>Get matched with the perfect intelligence models tailored for your workflow.</p>
+                </div>
+                <div class="floating-badge openai" title="ChatGPT">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="1.5"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                </div>
+                <div class="floating-badge figma" title="Figma">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#ff7262" stroke-width="1.5"><path d="M5 5.5A2.5 2.5 0 0 1 7.5 3h9A2.5 2.5 0 0 1 19 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 5 18.5v-13z"></path><path d="M12 3v18M5 12h14"></path></svg>
+                </div>
+                <div class="floating-badge midjourney" title="Midjourney">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="1.5"><path d="M22 22L2 2M22 2L2 22"></path></svg>
+                </div>
+                <div class="floating-badge google" title="Google Gemini">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Wrapper -->
+    <div class="content-wrapper">
+        
+        <!-- Categories Section -->
+        <section class="categories-section" id="categories">
+            <div class="section-header-center">
+                <span class="section-tag">Explore Fields</span>
+                <h2 class="section-title">Browse AI Tools By Category</h2>
+            </div>
+            
+            <div class="categories-grid" id="categoriesGrid">
+                <!-- Dynamically populated categories -->
+                <div class="category-card active" data-category="all">
+                    <div class="category-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    </div>
+                    <h4>All Tools</h4>
+                    <p id="allToolsCount">Loading...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Directory Section -->
+        <section class="directory-section" id="directory" style="padding-top: 5rem;">
+            <div class="section-header">
+                <span class="section-tag">Search Hub</span>
+                <h2 class="section-title">All Hand-Picked AI Tools</h2>
+            </div>
+
+            <!-- Filters & Sorting controls -->
+            <div class="directory-controls">
+                <form id="filterSearchForm" class="search-field">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" id="directorySearchInput" placeholder="Filter by keyword..." />
+                </form>
+
+                <div class="filter-group">
+                    <!-- Pricing Model Filter -->
+                    <select class="filter-select" id="filterPricing">
+                        <option value="all">All Pricing Models</option>
+                        <option value="Free">Free</option>
+                        <option value="Freemium">Freemium</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Free Trial">Free Trial</option>
+                    </select>
+
+                    <!-- Rating Filter -->
+                    <select class="filter-select" id="filterRating">
+                        <option value="0">All Ratings</option>
+                        <option value="4.5">4.5+ ★ Stars</option>
+                        <option value="4.0">4.0+ ★ Stars</option>
+                        <option value="3.5">3.5+ ★ Stars</option>
+                    </select>
+
+                    <!-- Sort -->
+                    <select class="filter-select" id="sortSelect">
+                        <option value="popular">Most Popular</option>
+                        <option value="rating">Highest Rated</option>
+                        <option value="newest">Newly Added</option>
+                    </select>
+
+                    <div class="results-count" id="resultsCount">0 Tools Found</div>
+                </div>
+            </div>
+
+            <!-- Tools Gallery -->
+            <div class="tools-section">
+                <div class="tools-grid" id="toolsGrid">
+                    <!-- Dynamic Tool Cards go here -->
+                    <div style="text-align: center; padding: 5rem; width: 100%; grid-column: 1 / -1; color: var(--text-muted);">
+                        Loading tools from database...
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="pagination-container" id="paginationContainer">
+                    <!-- Dynamic buttons -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision / Trending Split Grid -->
+        <section class="about-section" id="about" style="border-top: 1px solid var(--border-color); padding-top: 5rem; margin-top: 5rem;">
+            <div class="info-section-grid">
+                <div class="features-wrapper">
+                    <div class="section-header">
+                        <span class="section-tag">Our Vision</span>
+                        <h2 class="section-title">Why Choose AI Directory?</h2>
+                    </div>
+
+                    <div class="features-container">
+                        <div class="feature-item">
+                            <div class="feature-icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Hand-picked and verified AI tools</h4>
+                                <p>We manually evaluate every product for usability, quality, and utility before listing it here.</p>
+                            </div>
+                        </div>
+
+                        <div class="feature-item">
+                            <div class="feature-icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+                            </div>
+                            <div class="feature-info">
+                                <h4>Regularly updated database</h4>
+                                <p>Our team keeps tracking the release cycles of hot state-of-the-art AI systems daily.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trending Sidebar -->
+                <div class="trending-container">
+                    <div class="trending-card">
+                        <h3 style="font-size: 1.5rem; font-weight: 800; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff9f43" stroke-width="2"><path d="M23 6l-9.5 9.5-5-5L1 18"></path><polyline points="17 6 23 6 23 12"></polyline></svg>
+                            Trending AI Tools
+                        </h3>
+                        <div class="trending-list" id="trendingList">
+                            <!-- Dynamic trending items -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq" style="border-top: 1px solid var(--border-color); padding-top: 5rem; margin-top: 5rem;">
+            <div class="faq-section-grid">
+                <div>
+                    <span class="section-tag">Help Desk</span>
+                    <h2 class="section-title" style="margin-bottom: 1.5rem;">Frequently Asked Questions</h2>
+                    <p style="color: var(--text-secondary); line-height: 1.6;">Can't find the answer you're looking for? Reach out to our support team and we will get back to you as soon as possible.</p>
+                </div>
+
+                <div class="faq-list" id="faqList">
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Are these AI tools free to use?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="faq-answer">Many tools listed in our directory offer either free tiers, free trials, or are entirely free open-source software. We explicitly tag the pricing model of each tool so you can check before clicking.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How often is the directory updated?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="faq-answer">We monitor new product launches and update our directory daily. Hand-picked tools are verified and listed within 24-48 hours of their announcement or submission.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            Can I submit my AI tool?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="faq-answer">Absolutely! Click the "Submit Tool" button in the header, fill in the details of your tool, and submit it. Our editors will review it and publish it if it meets our quality standards.</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            How are tools selected?
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </div>
+                        <div class="faq-answer">We look for parameters like user reviews, utility, reliability, UI/UX quality, pricing transparency, and the underlying AI technology to decide if a tool is a good fit for our directory.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section class="newsletter-section" style="margin-top: 6rem;">
+            <div class="newsletter-card">
+                <div class="newsletter-info">
+                    <h3>Subscribe to Newsletter</h3>
+                    <p>Get the latest AI tools and updates delivered to your inbox weekly.</p>
+                </div>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email address" required />
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Submit AI Tool Modal -->
+    <div class="modal" id="submitModal">
+        <div class="modal-overlay" id="submitModalOverlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="closeSubmitModalBtn">&times;</button>
+            <div class="modal-header">
+                <h3>Submit an AI Tool</h3>
+                <p>Suggest a new tool to include in our directory. It will go live after admin approval.</p>
+            </div>
+            
+            <form id="submitToolForm">
+                <div class="form-group">
+                    <label for="submitName">Tool Name *</label>
+                    <input type="text" id="submitName" class="form-input" placeholder="e.g. ChatScribe" required />
+                </div>
+                <div class="form-group">
+                    <label for="submitCategory">Category *</label>
+                    <select id="submitCategory" class="form-select" required>
+                        <!-- Loaded dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="submitUrl">Website URL *</label>
+                    <input type="url" id="submitUrl" class="form-input" placeholder="https://example.com" required />
+                </div>
+                <div class="form-group">
+                    <label for="submitPricing">Pricing Model *</label>
+                    <select id="submitPricing" class="form-select" required>
+                        <option value="Free">Free</option>
+                        <option value="Freemium">Freemium</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Free Trial">Free Trial</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="submitVisits">Estimated Monthly Visits</label>
+                    <input type="text" id="submitVisits" class="form-input" placeholder="e.g. 500K, 12M" />
+                </div>
+                <div class="form-group">
+                    <label for="submitTags">Tags (Comma-separated)</label>
+                    <input type="text" id="submitTags" class="form-input" placeholder="chatbot, writing, assistant" />
+                </div>
+                <div class="form-group">
+                    <label for="submitDescription">Short Description *</label>
+                    <textarea id="submitDescription" class="form-textarea" rows="3" placeholder="Describe what this AI tool does in a few sentences..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="submitLogo">Logo (Custom SVG Markup - optional)</label>
+                    <textarea id="submitLogo" class="form-textarea" rows="2" placeholder="<svg ...>...</svg>"></textarea>
+                </div>
+                <button type="submit" class="modal-submit-btn">Submit for Review</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="/" class="logo">
+                    <span class="logo-sparkle">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </span>
+                    AI Directory
+                </a>
+                <p>The ultimate repository of modern artificial intelligence tools, models, and generative applications.</p>
+            </div>
+            
+            <div class="footer-links-group">
+                <div class="footer-column">
+                    <h4>Navigate</h4>
+                    <a href="/">Home</a>
+                    <a href="#directory">Tools Hub</a>
+                    <a href="#categories">Categories</a>
+                    <a href="#faq">FAQ</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Categories</h4>
+                    <a href="#directory" onclick="setCategoryFilter('writing')">Writing</a>
+                    <a href="#directory" onclick="setCategoryFilter('coding')">Coding</a>
+                    <a href="#directory" onclick="setCategoryFilter('image')">Image Generation</a>
+                    <a href="#directory" onclick="setCategoryFilter('video')">Video Editing</a>
+                </div>
+                <div class="footer-column">
+                    <h4>Legal</h4>
+                    <a href="#">Terms of Use</a>
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Ad Disclosure</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 AI Directory Website. Fully Dynamic Version. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+</html>

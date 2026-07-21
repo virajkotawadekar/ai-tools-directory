@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tool Details - AI Directory</title>
+    <meta name="description" content="Read reviews, ratings, visits statistics, and features of this AI tool in our directory." />
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body data-theme="dark">
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-sparkle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                </span>
+                AI Directory
+            </a>
+            
+            <nav class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/#directory" class="nav-link">Tools</a>
+                <a href="/#categories" class="nav-link">Categories</a>
+                <a href="/#about" class="nav-link">About</a>
+                <a href="/#faq" class="nav-link">FAQ</a>
+            </nav>
+
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Theme" aria-label="Toggle Theme">
+                    <svg id="sunIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                    <svg id="moonIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                </button>
+                
+                <span id="userSessionArea" style="display: flex; align-items: center; gap: 1rem;">
+                    <a href="/login" class="nav-link" style="font-weight: 600;">Login</a>
+                </span>
+                
+                <a href="/#directory" class="submit-btn" style="text-align: center;">Go to Gallery</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main details page layout -->
+    <main class="content-wrapper" style="padding-top: 10rem;">
+        <div id="loaderArea" style="padding: 5rem 0; text-align: center; font-size: 1.25rem; color: var(--text-muted);">
+            Loading tool details from MySQL database...
+        </div>
+
+        <div id="detailLayoutArea" class="detail-layout" style="display: none;">
+            
+            <!-- Main Column -->
+            <div class="detail-main">
+                <div class="detail-header-card">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1.5rem;">
+                        <div style="display: flex; gap: 1.5rem; align-items: center;">
+                            <div class="tool-logo-box" id="detailLogo" style="width: 80px; height: 80px; border-radius: 16px;">
+                                <!-- SVG Logo markup goes here -->
+                            </div>
+                            <div>
+                                <h1 id="detailName" style="font-size: 2.5rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.25rem;">
+                                    Tool Name
+                                </h1>
+                                <span class="tool-cat-pill" id="detailCategory">Category</span>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <button id="bookmarkDetailBtn" class="cta-btn cta-secondary" style="padding: 0.65rem 1rem; display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="bookmarkDetailSvg">
+                                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                                <span id="bookmarkDetailText">Bookmark</span>
+                            </button>
+
+                            <a href="#" id="detailVisitLink" target="_blank" class="cta-btn cta-primary" style="padding: 0.65rem 1.25rem;">
+                                Visit Website &rarr;
+                            </a>
+                        </div>
+                    </div>
+
+                    <p id="detailDescription" style="margin-top: 2.5rem; font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary);">
+                        Description
+                    </p>
+
+                    <div class="detail-meta-grid">
+                        <div class="meta-box">
+                            <h5>Pricing Model</h5>
+                            <p id="detailPricing" style="color: #10b981; font-weight: 700;">Freemium</p>
+                        </div>
+                        <div class="meta-box">
+                            <h5>Community Rating</h5>
+                            <p style="display: flex; align-items: center; gap: 0.25rem; font-weight: 700;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="#f59e0b" style="margin-top: -2px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                                <span id="detailRating">0.0</span> / 5.0
+                            </p>
+                        </div>
+                        <div class="meta-box">
+                            <h5>Monthly Visitors</h5>
+                            <p id="detailVisits" style="font-weight: 700;">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reviews Listing -->
+                <div class="reviews-section">
+                    <h3 style="font-size: 1.5rem; font-weight: 800; color: var(--text-primary); border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;" id="reviewsCountTitle">
+                        User Reviews (0)
+                    </h3>
+                    
+                    <div class="review-list" id="reviewsContainer">
+                        <!-- Loaded dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sidebar Form -->
+            <div>
+                <div class="reviews-section" style="position: sticky; top: 100px;">
+                    <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem;">
+                        Write a Review
+                    </h3>
+                    
+                    <div id="reviewAuthMessage" style="text-align: center; padding: 1rem 0; display: none;">
+                        <p style="color: var(--text-muted); margin-bottom: 1rem; font-size: 0.95rem;">
+                            You must be logged in to review this AI tool.
+                        </p>
+                        <a href="/login" id="loginRedirectLink" class="submit-btn" style="display: block; text-align: center;">
+                            Login / Register
+                        </a>
+                    </div>
+
+                    <form id="submitReviewForm" style="display: none;">
+                        <div class="form-group">
+                            <label for="reviewRating">Your Rating *</label>
+                            <select id="reviewRating" class="form-select" required>
+                                <option value="5">5 - Excellent</option>
+                                <option value="4">4 - Very Good</option>
+                                <option value="3">3 - Good</option>
+                                <option value="2">2 - Fair</option>
+                                <option value="1">1 - Poor</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="reviewComment">Comment *</label>
+                            <textarea id="reviewComment" class="form-textarea" rows="4" placeholder="Describe your experience with this tool..." required></textarea>
+                        </div>
+                        <button type="submit" class="modal-submit-btn">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-bottom" style="margin-top: 10rem;">
+            <p>&copy; 2026 AI Directory Website. Fully Dynamic Version. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../tool.js"></script>
+</body>
+</html>

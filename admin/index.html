@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - AI Directory</title>
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="admin.css">
+</head>
+<body data-theme="dark">
+
+    <!-- Toast Notification Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Navigation Header -->
+    <header>
+        <div class="nav-container">
+            <a href="/" class="logo">
+                <span class="logo-sparkle">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                    </svg>
+                </span>
+                Admin Panel
+            </a>
+            
+            <nav class="nav-links">
+                <a href="/" class="nav-link">View Site &rarr;</a>
+            </nav>
+
+            <div class="nav-actions">
+                <span id="adminSessionArea" style="display: flex; align-items: center; gap: 1rem;">
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">Verifying admin authorization...</span>
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin dashboard container -->
+    <main class="content-wrapper admin-layout" style="padding-top: 10rem;">
+        
+        <!-- Dashboard Analytics stats summary -->
+        <section class="admin-stats-grid">
+            <div class="admin-stat-card">
+                <h3 id="statTotalTools">0</h3>
+                <p>Total Tools Catalog</p>
+            </div>
+            <div class="admin-stat-card">
+                <h3 id="statPendingQueue" style="color: var(--warning);">0</h3>
+                <p>Pending Submissions</p>
+            </div>
+            <div class="admin-stat-card">
+                <h3 id="statApprovedLive" style="color: var(--secondary);">0</h3>
+                <p>Approved Live Tools</p>
+            </div>
+            <div class="admin-stat-card">
+                <h3 id="statTotalCategories">0</h3>
+                <p>Categories Active</p>
+            </div>
+        </section>
+
+        <!-- Dynamic Control Panels -->
+        <div class="admin-tabs" style="margin-top: 3rem; display: flex; gap: 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1rem;">
+            <button class="tab-btn active" onclick="switchTab('pending')">Pending Submissions</button>
+            <button class="tab-btn" onclick="switchTab('approved')">Live Directory Catalog</button>
+            <button class="tab-btn" onclick="switchTab('categories')">Manage Categories</button>
+        </div>
+
+        <!-- 1. PENDING SUBMISSIONS QUEUE -->
+        <section id="panelPending" class="admin-panel" style="margin-top: 3rem;">
+            <div class="section-header">
+                <span class="section-tag">Pending Queue</span>
+                <h2 class="section-title">Submitted AI Tools For Review</h2>
+            </div>
+
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Tool Name</th>
+                            <th>Category</th>
+                            <th>Pricing</th>
+                            <th>Website URL</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pendingQueueTable">
+                        <tr>
+                            <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Loading queue...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 2. LIVE DIRECTORY CATALOG -->
+        <section id="panelApproved" class="admin-panel" style="margin-top: 3rem; display: none;">
+            <div class="section-header">
+                <span class="section-tag">Catalog Admin</span>
+                <h2 class="section-title">Manage Live Directory Catalog</h2>
+            </div>
+
+            <div class="admin-table-container">
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>Tool Name</th>
+                            <th>Category</th>
+                            <th>Pricing</th>
+                            <th>Visits</th>
+                            <th>Rating</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="approvedCatalogTable">
+                        <tr>
+                            <td colspan="6" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                Loading catalog...
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. MANAGE CATEGORIES -->
+        <section id="panelCategories" class="admin-panel" style="margin-top: 3rem; display: none;">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 3rem; align-items: start;">
+                <!-- Add Category Form -->
+                <div class="reviews-section" style="padding: 2.5rem; background: var(--bg-card); border-radius: var(--radius-md);">
+                    <h3 style="font-size: 1.25rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem;">
+                        Add New Category
+                    </h3>
+                    <form id="addCategoryForm">
+                        <div class="form-group">
+                            <label for="catName">Category Name *</label>
+                            <input type="text" id="catName" class="form-input" placeholder="e.g. Automation" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="catIcon">Icon Name (SVG class)</label>
+                            <input type="text" id="catIcon" class="form-input" placeholder="e.g. grid, play, voice" />
+                        </div>
+                        <div class="form-group">
+                            <label for="catDesc">Description</label>
+                            <textarea id="catDesc" class="form-textarea" rows="3" placeholder="Category brief overview..."></textarea>
+                        </div>
+                        <button type="submit" class="modal-submit-btn">Create Category</button>
+                    </form>
+                </div>
+
+                <!-- Categories list table -->
+                <div>
+                    <div class="section-header">
+                        <span class="section-tag">Categories Catalog</span>
+                        <h2 class="section-title" style="font-size: 1.5rem;">Current Active Categories</h2>
+                    </div>
+                    <div class="admin-table-container">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Category Name</th>
+                                    <th>Slug</th>
+                                    <th>Tools Count</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="categoriesTable">
+                                <tr>
+                                    <td colspan="5" style="text-align: center; color: var(--text-muted); padding: 2rem;">
+                                        Loading categories...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Admin Edit Tool Modal -->
+    <div class="modal" id="editModal">
+        <div class="modal-overlay" id="editModalOverlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="closeEditModalBtn">&times;</button>
+            <div class="modal-header">
+                <h3>Edit AI Tool Specifications</h3>
+                <p>Modify credentials and features parameters for: <strong id="editModalTitle">Tool</strong></p>
+            </div>
+            
+            <form id="editToolForm">
+                <input type="hidden" id="editId" />
+                <div class="form-group">
+                    <label for="editName">Tool Name</label>
+                    <input type="text" id="editName" class="form-input" required />
+                </div>
+                <div class="form-group">
+                    <label for="editCategory">Category</label>
+                    <select id="editCategory" class="form-select" required>
+                        <!-- Loaded dynamically -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editUrl">Website URL</label>
+                    <input type="url" id="editUrl" class="form-input" required />
+                </div>
+                <div class="form-group">
+                    <label for="editPricing">Pricing Model</label>
+                    <select id="editPricing" class="form-select" required>
+                        <option value="Free">Free</option>
+                        <option value="Freemium">Freemium</option>
+                        <option value="Paid">Paid</option>
+                        <option value="Free Trial">Free Trial</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="editVisits">Monthly Visits</label>
+                    <input type="text" id="editVisits" class="form-input" required />
+                </div>
+                <div class="form-group">
+                    <label for="editTags">Tags (Comma-separated)</label>
+                    <input type="text" id="editTags" class="form-input" />
+                </div>
+                <div class="form-group">
+                    <label for="editDescription">Description</label>
+                    <textarea id="editDescription" class="form-textarea" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="editLogo">Logo (Custom SVG Markup)</label>
+                    <textarea id="editLogo" class="form-textarea" rows="2"></textarea>
+                </div>
+                <button type="submit" class="modal-submit-btn">Save Modifications</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="admin.js"></script>
+</body>
+</html>
