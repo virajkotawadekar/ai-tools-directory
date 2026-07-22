@@ -7,7 +7,7 @@ const state = {
   favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
 };
 
-const API_BASE = '/api';
+const API_BASE = 'https://ai-tools-directory-production-3e93.up.railway.app/api';
 
 // On Page Load
 document.addEventListener('DOMContentLoaded', () => {

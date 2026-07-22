@@ -13,7 +13,7 @@ const state = {
 };
 
 // Base API URL
-const API_BASE = '/api';
+const API_BASE = 'https://ai-tools-directory-production-3e93.up.railway.app/api';
 
 // On Document Load
 document.addEventListener('DOMContentLoaded', () => {
