@@ -1,6 +1,6 @@
 -- CREATE DATABASE AND USE IT
 CREATE DATABASE IF NOT EXISTS ai_directory;
-USE ai_directory;
+USE railway;
 
 -- 1. CATEGORIES TABLE
 CREATE TABLE IF NOT EXISTS categories (

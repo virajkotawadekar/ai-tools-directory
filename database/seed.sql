@@ -1,4 +1,4 @@
-USE ai_directory;
+USE railway;
 
 DELETE FROM reviews;
 DELETE FROM tools;
