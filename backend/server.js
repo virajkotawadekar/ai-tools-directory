@@ -82,20 +82,12 @@ app.get('/tools/:slug', async (req, res) => {
   }
 });
 
-// Serve frontend assets statically
-app.use(express.static(path.join(__dirname, '../frontend')));
 
-// Serve admin panel statically at /admin
-app.use('/admin', express.static(path.join(__dirname, '../admin')));
-
-// Direct routes for login page
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/login.html'));
-});
-
-// Fallback: send index.html for undefined frontend routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+app.get('/', (req, res) => {
+  res.json({
+    success: true,
+    message: 'AI Tools Directory API is running'
+  });
 });
 
 // Start the server
