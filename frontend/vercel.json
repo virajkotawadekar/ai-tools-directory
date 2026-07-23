@@ -5,6 +5,14 @@
       "destination": "https://ai-tools-directory-production-3e93.up.railway.app/api/:path*"
     },
     {
+      "source": "/sitemap.xml",
+      "destination": "/sitemap.xml"
+    },
+    {
+      "source": "/robots.txt",
+      "destination": "/robots.txt"
+    },
+    {
       "source": "/login",
       "destination": "/login.html"
     },
