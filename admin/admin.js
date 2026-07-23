@@ -137,6 +137,7 @@ async function fetchTools() {
   }
 }
 
+
 // 3. Render Pending Queue Table
 function renderPendingTable(tools) {
   const tbody = document.getElementById('pendingQueueTable');
