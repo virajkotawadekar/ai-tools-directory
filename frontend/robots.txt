@@ -1,0 +1,5 @@
+
+User-agent: *
+Allow: /
+
+Sitemap: https://ai-tools-directory-seven-eosin.vercel.app/sitemap.xml
